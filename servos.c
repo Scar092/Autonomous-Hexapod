@@ -1,5 +1,3 @@
-#define INCREMENT 1; //speed (degrees/cycle)
-
 int curr_ang[15] = <READ>; //current servo's angles
 
 int angle[15]; //needed angles
@@ -8,9 +6,9 @@ angle = getchar(); //input angles
 while (curr_angs != angles) {
      for (i in curr_angs, angles) {
           if (angles[i] < curr_angs[i]) {
-               incr = -INCREMENT;
+               incr = -1;
           } else if (angles[i] > curr_angs[i]) { {
-               incr = INCREMENT;
+               incr = 1;
           } else {
                continue;
           }
