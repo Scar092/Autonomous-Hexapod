@@ -12,7 +12,7 @@ while (curr_angs != angles) {
           } else {
                continue;
           }
-          angles[i] += incr;
+          curr_angs[i] += incr;
      }
      angle_15 = set_angle (angles[15]);
      angle_14 = set_angle (angles[14]);
