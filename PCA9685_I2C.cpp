@@ -11,7 +11,6 @@ void set_servo (ang) {
      int ang, pwm
      char val_l, val_h;
 
-     ang = ;
      pwm = angle/180*4095; //angle to PWM
      val_h = pwm & 0xF00; //high 4 bits of PWM
      val_l = pwm & 0xFF; //low 8 bits of PWM
