@@ -1,4 +1,4 @@
-#include <wiringPiI2C.h>
+Он#include <wiringPiI2C.h>
 
 #define BOARD_ID 0x60 //device adress
 #define LED13_ON_L 0x3A //low ON register date 
@@ -6,7 +6,7 @@
 #define LED13_OFF_L 0x3C //low OFF register date
 #define LED13_OFF_H 0x3D //high OFF register date
 
-void set_servo (ang) {
+void set_servo_ang (ang) {
      int board, default_1, default_2, result_1, result_2;
      int ang, pwm
      char val_l, val_h;
