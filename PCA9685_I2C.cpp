@@ -7,12 +7,17 @@
 #define LED13_OFF_H 0x3D
 
 int board, default_1, default_2, result_1, result_2;
-int ang
-char pwm, val_l, val_h;
+int ang, pwm
+char val_l, val_h;
 
 ang = ; //angle defined early 
 pwm = angle/180*4095; //Angle to PWM
-val_h = pwm >> 4;
+val_h = pwm >> 8;
+pwm = 1 << 12;
+pwm = 1 << 11;
+pwm = 1 << 10;
+pwm = 1 << 9;
+val_l = pwm;
 
 board = wiringPiI2CSetup (BOARD_ID);
 default_1 = wiringPiI2CWriteReg8 (BOARD_ID, LED13_ON_L, 0xA);
