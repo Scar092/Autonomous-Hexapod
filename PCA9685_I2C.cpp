@@ -20,10 +20,15 @@ board = wiringPiI2CSetup (BOARD_ID); //initialisation
 /* Each Servo (LED) output have two 12-bit words, that indicates
 front and rear moments of every pulse (called ON and OFF moments).
 There are 4096 repeating parts of time. Every 10 part we will have
-start condition. And the pulse width will be identified by end moment. */ 
+start condition. And the pulse width will be identified by end
+moment. Every word is devided between 2 registers. So we have 8 low
+bits and 4 high bits. Also have additional bits in  High register.
+Please, look to PCA9685 datasheet. And be attentive. */ 
 
+//Start condition 
 default_1 = wiringPiI2CWriteReg8 (BOARD_ID, LED13_ON_L, 0xA);
 default_2 = wiringPiI2CWriteReg8 (BOARD_ID, LED13_ON_H, 0x0);
 
+//Stop condition
 result_1 = wiringPiI2CWriteReg8 (BOARD_ID, LED13_OFF_L, val_l);
 result_1 = wiringPiI2CWriteReg8 (BOARD_ID, LED13_OFF_H, val_h);
