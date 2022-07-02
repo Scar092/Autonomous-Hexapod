@@ -6,12 +6,11 @@
 #define LED13_OFF_L 0x3C //low OFF register date
 #define LED13_OFF_H 0x3D //high OFF register date
 
-void set_servo_ang (ang) {
+void set_servo_ang (int ang) {
      int board, default_1, default_2, result_1, result_2;
-     int ang, pwm
-     int val_l, val_h;
+     int pwm, val_l, val_h;
 
-     pwm = angle/180*4095; //transform angle value to PWM
+     pwm = ang/180*4095; //transform angle value to PWM
      val_h = pwm & 0xF00; //high 4 bits of PWM
      val_l = pwm & 0xFF; //low 8 bits of PWM
 
