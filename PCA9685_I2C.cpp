@@ -1,6 +1,82 @@
 #include <wiringPiI2C.h>
 
 #define BOARD_ID 0x60 //device adress
+
+#define LED1_ON_L 0x3A //low ON register date 
+#define LED1_ON_H 0x3B //high ON register date
+#define LED1_OFF_L 0x3C //low OFF register date
+#define LED1_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
+#define LED13_ON_L 0x3A //low ON register date 
+#define LED13_ON_H 0x3B //high ON register date
+#define LED13_OFF_L 0x3C //low OFF register date
+#define LED13_OFF_H 0x3D //high OFF register date
+
 #define LED13_ON_L 0x3A //low ON register date 
 #define LED13_ON_H 0x3B //high ON register date
 #define LED13_OFF_L 0x3C //low OFF register date
