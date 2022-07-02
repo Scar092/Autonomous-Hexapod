@@ -1,4 +1,4 @@
-Он#include <wiringPiI2C.h>
+#include <wiringPiI2C.h>
 
 #define BOARD_ID 0x60 //device adress
 #define LED13_ON_L 0x3A //low ON register date 
