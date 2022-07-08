@@ -9,10 +9,36 @@
 #define LED0_OFF_L 0x3C 
 #define LED0_OFF_H 0x3D // AND THIS ALL!!!!!
 
+int get_board_addr (int num) {
+     if (num == 1) {
+          int board_1 {};
+          board_1 = wiringPiI2CSetup (BOARD_ID_1); //initialisation first board
+          return board_1;
+     } else if (num == 2) {
+          int board_2 {};
+          board_2 = wiringPiI2CSetup (BOARD_ID_2); //initialisation second board
+          return board_2;
+     } else {
+          std::cout << "Invalid board number!\n";
+          break;
+     }
+}
+
+void board_init(int board) {
+
+     /* This function set the PCA9685 board to normal mode and also set the chip
+        frequency to a suitable for this project */ 
+
+     int adrr {get_board_addr(board)};
+     wiringPiI2CWriteReg8 (adrr, 0x00, 0x11);
+     wiringPiI2CWriteReg8 (adrr, 0xFE, 0x79);
+     wiringPiI2CWriteReg8 (adrr, 0x00, 0x01);
+}   
+
 void set_servo_angle (int channel, int ang) {
     
      /* This function is designed to use into the endless cycle, special for HEXY V1.0
-     smart house hexapod. Therefore it consists "break" keyword in some cases */
+        smart house hexapod. Therefore it consists "break" keyword in some cases */
 
      int pwm {}, val_l {}, val_h {};
 
