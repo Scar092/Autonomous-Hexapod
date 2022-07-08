@@ -11,13 +11,9 @@
 
 int get_board_addr (int num) {
      if (num == 1) {
-          int board_1 {};
-          board_1 = wiringPiI2CSetup (BOARD_ID_1); //initialisation first board
-          return board_1;
+          return wiringPiI2CSetup (BOARD_ID_1);
      } else if (num == 2) {
-          int board_2 {};
-          board_2 = wiringPiI2CSetup (BOARD_ID_2); //initialisation second board
-          return board_2;
+          return wiringPiI2CSetup (BOARD_ID_2);
      } else {
           std::cout << "Invalid board number!\n";
           break;
