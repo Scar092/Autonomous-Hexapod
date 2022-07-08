@@ -58,16 +58,11 @@ void set_servo_angle (int channel, int ang) {
      moment. Every word is devided between 2 registers. So we have 8 low
      bits and 4 high bits. Also have additional bits in  High register.
      Please, look to PCA9685 datasheet. And be attentive. */ 
-     
-     int board {}, board_1 {}, board_2 {};
-
-     board_1 = wiringPiI2CSetup (BOARD_ID_1); //initialisation first board
-     board_2 = wiringPiI2CSetup (BOARD_ID_2); //initialisation second board
 
      if (0<=channel<=15) {
-          board = board_1;
+          board = get_board_adrr(1);
      } else if (16<=channel<=19) {
-          board = board_2;
+          board = get_board_adrr(2);
           channel -= 16;
      } else {
           std::cout << "Impossible channel value!\n";
@@ -83,4 +78,27 @@ void set_servo_angle (int channel, int ang) {
      wiringPiI2CWriteReg8 (board, LED0_OFF_H + channel, val_h);
 }
 
-int read_servo_angle() {
+int read_servo_angle(int channel) {
+     int reg_on_h {}, reg_on_l {}, reg_off_h {}, reg_off_l {};
+     int board {};
+
+     if (0<=channel<=15) {
+          board = get_board_adrr(1);
+     } else if (16<=channel<=19) {
+          board = get_board_adrr(2);
+          channel -= 16;
+     } else {
+          std::cout << "Invalid channel value!\n";
+          break;
+     }
+
+     reg_on_h  = wiringPiI2CReadReg8 (board, LED0_ON_H + channel);
+     reg_on_l  = wiringPiI2CReadReg8 (board, LED0_ON_L + channel);
+     reg_off_h = wiringPiI2CReadReg8 (board, LED0_OFF_H + channel);
+     reg_off_l = wiringPiI2CReadReg8 (board, LED0_OFF_L + channel);
+     
+     int ang {};
+
+     ang = ((reg_off_h << 8)+reg_off_l)/4095*180;
+     return ang;
+}
