@@ -92,13 +92,13 @@ void set_servo_angle (int channel, int ang) {
      wiringPiI2CWriteReg8 (board, LED0_OFF_H + channel*4, val_h);
 }
 
-int read_servo_angle(int channel) {
+int read_servo_angle (int channel) {
      int reg_on_h {}, reg_on_l {}, reg_off_h {}, reg_off_l {};
      int board {};
 
-     if (0<=channel<=15) {
+     if (channel>=0 & channel<=15) {
           board = get_board_adrr(1);
-     } else if (16<=channel<=19) {
+     } else if (channel>=16 & channel<=19) {
           board = get_board_adrr(2);
           channel -= 16;
      } else {
@@ -106,13 +106,15 @@ int read_servo_angle(int channel) {
           break;
      }
 
-     reg_on_h  = wiringPiI2CReadReg8 (board, LED0_ON_H + channel);
-     reg_on_l  = wiringPiI2CReadReg8 (board, LED0_ON_L + channel);
-     reg_off_h = wiringPiI2CReadReg8 (board, LED0_OFF_H + channel);
-     reg_off_l = wiringPiI2CReadReg8 (board, LED0_OFF_L + channel);
-     
-     int ang {};
+     reg_on_h  = wiringPiI2CReadReg8 (board, LED0_ON_H + channel*4);
+     reg_on_l  = wiringPiI2CReadReg8 (board, LED0_ON_L + channel*4);
+     reg_off_h = wiringPiI2CReadReg8 (board, LED0_OFF_H + channel*4);
+     reg_off_l = wiringPiI2CReadReg8 (board, LED0_OFF_L + channel*4);
 
-     ang = ((reg_off_h << 8)+reg_off_l)/4095*180;
-     return ang;
+     if (reg_on_l!=0 | reg_on_h!=0) {
+          std::"Fatal error!\n";
+          break;
+     }
+
+     return (((reg_off_h << 8)+reg_off_l)-129)/2;
 }
