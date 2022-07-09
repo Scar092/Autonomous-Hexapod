@@ -10,6 +10,12 @@
 #define LED0_OFF_H 0x3D // AND THIS ALL!!!!!
 
 int get_board_addr (int num) {
+
+     /* This function have no return in "else". Also I would test it with 
+        another board, when it will be possible
+        
+        TESTED! NOT ALL! */
+
      if (num == 1) {
           return wiringPiI2CSetup (BOARD_ID_1);
      } else if (num == 2) {
@@ -23,7 +29,10 @@ int get_board_addr (int num) {
 void board_init(int board) {
 
      /* This function set the PCA9685 board to normal mode and also set the chip
-        frequency to a suitable for this project */ 
+        frequency to a suitable for this project
+        Also operation of this function depends from previous.
+        
+        TESTED! NOT ALL! */ 
 
      int adrr {get_board_addr(board)};
      wiringPiI2CWriteReg8 (adrr, 0x00, 0x11);
@@ -38,8 +47,16 @@ void set_servo_angle (int channel, int ang) {
 
      int pwm {}, val_l {}, val_h {};
 
-     if (0<=ang<=180) {
-          pwm = ang/180*4095;  //transform angle value to corresponding PWM
+     if (ang>=0 & ang<=180) {
+
+          /* Note: this my own practical test calculations.
+             0°     =   0     pwm;
+             90°    =   202.5 pwm;
+             180°   =   405   pwm;
+             step   =   2.25  pwm.
+          */
+              
+          pwm = ang*2.25;.     //transform angle value to corresponding PWM
           val_h = pwm >> 8;    //high 4 bits of PWM
           val_l = pwm & 0xFF;  //low 8 bits of PWM
      } else {
