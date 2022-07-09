@@ -56,7 +56,7 @@ void set_servo_angle (int channel, int ang) {
              step   =   2     pwm.
           */
               
-          pwm = ang*2.25;      //transform angle value to corresponding PWM
+          pwm = ang*2+129;     //transform angle value to corresponding PWM
           val_h = pwm >> 8;    //high 4 bits of PWM
           val_l = pwm & 0xFF;  //low 8 bits of PWM
      } else {
@@ -72,9 +72,10 @@ void set_servo_angle (int channel, int ang) {
      bits and 4 high bits. Also have additional bits in  High register.
      Please, look to PCA9685 datasheet. And be attentive. */ 
 
-     if (0<=channel<=15) {
+     int board {};
+     if (channel>=0 & channel<=15) {
           board = get_board_adrr(1);
-     } else if (16<=channel<=19) {
+     } else if (channel>=16 & channel<=19) {
           board = get_board_adrr(2);
           channel -= 16;
      } else {
