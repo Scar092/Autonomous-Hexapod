@@ -50,10 +50,10 @@ void set_servo_angle (int channel, int ang) {
      if (ang>=0 & ang<=180) {
 
           /* Note: this my own practical test results:
-             0°     =   0     pwm;
-             90°    =   202.5 pwm;
-             180°   =   405   pwm;
-             step   =   2.25  pwm.
+             0°     =   129   pwm;
+             90°    =   309   pwm;
+             180°   =   489   pwm;
+             step   =   2     pwm.
           */
               
           pwm = ang*2.25;      //transform angle value to corresponding PWM
