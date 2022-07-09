@@ -4,10 +4,10 @@
 #define BOARD_ID_1 0x40 //first board adress
 #define BOARD_ID_2 0x60 //second board adress (check!)
 
-#define LED0_ON_L 0x3A // CHECK!!!!!!!
-#define LED0_ON_H 0x3B 
-#define LED0_OFF_L 0x3C 
-#define LED0_OFF_H 0x3D // AND THIS ALL!!!!!
+#define LED0_ON_L  0x06 
+#define LED0_ON_H  0x07 
+#define LED0_OFF_L 0x08 
+#define LED0_OFF_H 0x09
 
 int get_board_addr (int num) {
 
@@ -84,12 +84,12 @@ void set_servo_angle (int channel, int ang) {
      }
 
      //Start condition (is default)
-     wiringPiI2CWriteReg8 (board, LED0_ON_L + channel, 0xA);
-     wiringPiI2CWriteReg8 (board, LED0_ON_H + channel, 0x0);
+     wiringPiI2CWriteReg8 (board, LED0_ON_L + channel*4, 0x00);
+     wiringPiI2CWriteReg8 (board, LED0_ON_H + channel*4, 0x00);
 
      //Stop condition
-     wiringPiI2CWriteReg8 (board, LED0_OFF_L + channel, val_l);
-     wiringPiI2CWriteReg8 (board, LED0_OFF_H + channel, val_h);
+     wiringPiI2CWriteReg8 (board, LED0_OFF_L + channel*4, val_l);
+     wiringPiI2CWriteReg8 (board, LED0_OFF_H + channel*4, val_h);
 }
 
 int read_servo_angle(int channel) {
