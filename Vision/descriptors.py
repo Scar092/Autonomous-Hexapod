@@ -29,8 +29,8 @@ def plot_desc (image, desc, area = False):
      if area:
           for i in desc:
                t = arange(0, 0.01, 0.1)*2*pi
-               x = r*cos(t)+i[:2][0]
-               y = r*sin(t)+i[2][1]
+               x = i[2]*cos(t)+i[:2][0]
+               y = i[2]*sin(t)+i[:2][1]
                plot (x, y, 'b', linewidth=2)
      else:
           plot (desc[:,0], desc[:,1], 'ob')
