@@ -17,8 +17,8 @@ void Board::board_init()
 {
 
 	 /* This function set the PCA9685 board to normal mode and also set the chip
-		frequency to a suitable for this project
-		Also operation of this function depends from previous.
+	    frequency to a suitable for this project
+	    Also operation of this function depends from previous.
 
 	    TESTED! NOT ALL! */
 
@@ -49,7 +49,6 @@ int Board::get_board_addr(int num)
 	{
 		std::cout << "Invalid board number!\n";
 		//break;
-		return 3;
 	}
 }
 
