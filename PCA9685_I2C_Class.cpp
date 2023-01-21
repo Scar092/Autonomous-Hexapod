@@ -1,4 +1,4 @@
-#include "PCA9685_I2C.h"
+#include "PCA9685_I2C_Class.h"
 
 /*Board initialisation
 ----------------------*/
